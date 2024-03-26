@@ -1,0 +1,10 @@
+delete from flyway_schema_history where success = 0;
+
+O comando anterior serve para apagar na tabela do Flyway todas as migrations cuja execução falhou.
+Após isso, basta corrigir o código da migration e executar novamente o projeto.
+
+Obs: Pode acontecer de alguma migration ter criado uma tabela e/ou colunas e com isso o problema vai persistir,
+ pois o flyway não vai apagar as tabelas/colunas criadas em migrations que falharam. Nesse caso você pode apagar o banco de dados e criá-lo novamente:
+
+ drop database vollmed_api;
+ create database vollmed_api;
